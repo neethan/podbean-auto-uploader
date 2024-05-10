@@ -27,5 +27,5 @@ export async function fetchEpisodeInfo(index: number) {
   if (records.info.lines > index) {
     throw new Error(`Episode ${index} does not exist in the csv file`);
   }
-  return (records[index] as CsvEpisodeInformation);
+  return records[index] as CsvEpisodeInformation;
 }

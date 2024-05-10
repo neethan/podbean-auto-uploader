@@ -14,7 +14,6 @@ export interface PodbeanToken {
   expires_in: number;
 }
 
-
 export type PodbeanEpisodeStatus = "publish" | "draft";
 export type PodbeanEpisodeType = "public" | "premium" | "private";
 export type PodbeanAppleEpisodeType = "full" | "trailer" | "bonus";
@@ -60,7 +59,6 @@ export interface PodbeanError {
   error: string;
   error_description: string;
 }
-
 
 /**
  * Checks an object is a PodbeanError

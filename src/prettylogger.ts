@@ -8,6 +8,7 @@ declare global {
     success(message?: any, ...optionalParams: any[]): void;
   }
 }
+
 /**
  * A pretty nodejs logger that logs with colors, file names and line numbers.
  *
@@ -35,13 +36,9 @@ export default class PrettyLogger {
   private static getLineNumber(): string {
     const isWindows = process.platform === "win32";
     const delimiter = isWindows ? "\\" : "/";
-    const line = ((new Error("log").stack.split("\n")[3] || "…").match(
-      /\(([^)]+)\)/
-    ) || ["", "not found"])[1];
+    const line = ((new Error("log").stack.split("\n")[3] || "…").match(/\(([^)]+)\)/) || ["", "not found"])[1];
     const fileAndLine =
-      line.lastIndexOf(delimiter) > -1
-        ? line.substring(line.lastIndexOf(delimiter) + 1, line.lastIndexOf(":"))
-        : line;
+      line.lastIndexOf(delimiter) > -1 ? line.substring(line.lastIndexOf(delimiter) + 1, line.lastIndexOf(":")) : line;
     return pc.white(pc.italic(fileAndLine.padEnd(this.PADDING_LENGTH)));
   }
 
@@ -52,47 +49,27 @@ export default class PrettyLogger {
 
   // Log error messages
   private consoleError(...args: any[]) {
-    log.call(
-      console.error,
-      PrettyLogger.getLineNumber() + pc.red(pc.bold("   (error)")),
-      ...args
-    );
+    log.call(console.error, PrettyLogger.getLineNumber() + pc.red(pc.bold("   (error)")), ...args);
   }
 
   // Log success messages
   private consoleSuccess(...args: any[]) {
-    log.call(
-      console.log,
-      PrettyLogger.getLineNumber() + pc.green(pc.bold(" (success)")),
-      ...args
-    );
+    log.call(console.log, PrettyLogger.getLineNumber() + pc.green(pc.bold(" (success)")), ...args);
   }
 
   // Log warning messages
   private consoleWarn(...args: any[]) {
-    log.call(
-      console.warn,
-      PrettyLogger.getLineNumber() + pc.yellow(pc.bold("    (warn)")),
-      ...args
-    );
+    log.call(console.warn, PrettyLogger.getLineNumber() + pc.yellow(pc.bold("    (warn)")), ...args);
   }
 
   // Log info messages
   private consoleInfo(...args: any[]) {
-    log.call(
-      console.log,
-      PrettyLogger.getLineNumber() + pc.cyan(pc.bold("    (info)")),
-      ...args
-    );
+    log.call(console.log, PrettyLogger.getLineNumber() + pc.cyan(pc.bold("    (info)")), ...args);
   }
 
   // Log log messages
   private consoleLog(...args: any[]) {
-    log.call(
-      console.log,
-      PrettyLogger.getLineNumber() + pc.white(pc.bold("     (log)")),
-      ...args
-    );
+    log.call(console.log, PrettyLogger.getLineNumber() + pc.white(pc.bold("     (log)")), ...args);
   }
 
   /**

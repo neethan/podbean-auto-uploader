@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "target": "es2017",
+    "module": "nodenext",
+    "esModuleInterop": true
+  }
+}

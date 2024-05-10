@@ -12,7 +12,7 @@ Run the following command to install the required packages and start the applica
 
 ```bash
 npm install
-npm run app
+npm start
 ```
 
 ## Usage
